@@ -1,5 +1,5 @@
 import numpy as numpy
-from flask import flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template
 import requests
 import sklearn
 import pickle
