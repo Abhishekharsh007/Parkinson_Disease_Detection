@@ -8,7 +8,7 @@ from sklearn.preprocessing import MinMaxScaler
 app = Flask(__name__)
 
 model32 = pickle.load(open('parkinson_model32.pkl','rb'))
-@app.route('/', methods=['GET'])
+@app.route('/')
 def Home():
     return render_template('index.html')
 
@@ -40,11 +40,11 @@ def predict():
         feature21 = float(request.form['D2'])
         feature22 = float(request.form['PPE'])
 
-        values = np.array([[feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, feature9, feature10, feature11, feature12, feature13, feature14, feature15, feature16, feature17, feature18, feature19, feature20, feature21, feature22]])
+        values = np.array([feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, feature9, feature10, feature11, feature12, feature13, feature14, feature15, feature16, feature17, feature18, feature19, feature20, feature21, feature22]).reshape(1,3)
 
         prediction = model32.predict(values)
 
-        if (prediction==1):
+        if (prediction[0]==1):
             return render_template('index.html', prediction_text='positive report') 
 
         else:
