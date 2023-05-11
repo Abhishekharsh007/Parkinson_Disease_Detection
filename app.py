@@ -1,4 +1,4 @@
-import numpy as numpy
+import numpy as np
 from flask import Flask, request, jsonify, render_template
 import requests
 import sklearn
