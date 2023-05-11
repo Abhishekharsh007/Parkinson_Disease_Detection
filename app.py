@@ -4,10 +4,12 @@ import requests
 import sklearn
 import pickle
 from sklearn.preprocessing import MinMaxScaler
+
 app = Flask(__name__)
+
 model32 = pickle.load(open('parkinson_model32.pkl', 'rb'))
 @app.route('/', methods=['GET'])
-def Home():
+def home_page():
     return render_template('index.html')
 
 
