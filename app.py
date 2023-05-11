@@ -40,9 +40,9 @@ def predict():
 
         values = np.array([[feature_1, feature_2, feature_3, feature_4, feature_5, feature_6, feature_7, feature_8, feature_9, feature_10, feature_11, feature_12, feature_13, feature_14, feature_15, feature_16, feature_17, feature_18, feature_19, feature_20, feature_21, feature_22]])
 
-        result = model32.predict(values)
+        prediction = model32.predict(values)
 
-        if result==1:
+        if prediction==1:
             return render_template('index.html', prediction_text='positive report') 
 
         else:
@@ -52,5 +52,5 @@ def predict():
         return render_template('index.html')
 
 
-if __name__=="__main__":
+if __name__=='__main__':
     app.run(debug=True)
