@@ -9,11 +9,11 @@ app = Flask(__name__)
 
 model32 = pickle.load(open('parkinson_model32.pkl','rb'))
 @app.route('/')
-def Home():
+def index():
     return render_template('index.html')
 
 scaler = MinMaxScaler()
-@app.route("/predict", methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict_parkinson():
     feature1 = float(request.form.get('MDVP:Fo(Hz)'))
     feature2 = float(request.form.get('MDVP:Fhi(Hz)'))
