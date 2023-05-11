@@ -24,4 +24,4 @@ sqlparse==0.4.4
 tzdata==2023.3
 virtualenv==20.23.0
 virtualenv-clone==0.5.7
-Werkzeug==2.3.4
+Werkzeug==2.2.3
