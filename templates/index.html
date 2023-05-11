@@ -9,9 +9,13 @@
 
 <body background="chipi.png" style="background-repeat: no-repeat; background-size: 100%100%;">
     <div style="color: blue;">
+        <h1 style="background-color: black; font-size: 300%; display: contents;"> Parkinson Disease Detection </h1>
+        
+        {% if result %}
+            <h2> {{result}} </h2>
+        {% endif %}
+        
         <form action="/predict" method="post">
-            <h2 style="background-color: black; font-size: 300%; display: contents;"> Parkinson Disease Detection </h2>
-
             <h3>MDVP:Fo(Hz)</h3>
             <input id="first" name="MDVP:Fo(Hz)" required="required">
 
@@ -82,8 +86,6 @@
 
             <button id="sub" type="submit" style="background-color: yellow; border: 5px; font-size: 30px; border:20px; border-radius: 5px;">Predict</button>
         </form>
-        <br><br>
-        <h3>{{ prediction_text }}<h3>
     </div>
 
 
