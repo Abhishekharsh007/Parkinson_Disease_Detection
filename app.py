@@ -40,13 +40,13 @@ def predict_parkinson():
 
     values = np.array([feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, feature9, feature10, feature11, feature12, feature13, feature14, feature15, feature16, feature17, feature18, feature19, feature20, feature21, feature22]).reshape(1,3)
 
-    prediction = model32.predict(values)
+    result = model32.predict(values)
 
-    if (prediction[0]==1):
-        return render_template('index.html', prediction_text='positive report') 
+    if prediction[0]==1:
+        return render_template('index.html', result='positive report') 
 
     else:
-        return render_template('index.html', prediction_text='negative report')
+        return render_template('index.html', result='negative report')
 
 if __name__=='__main__':
     app.run(debug=True)
