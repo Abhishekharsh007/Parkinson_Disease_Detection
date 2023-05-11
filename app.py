@@ -16,7 +16,7 @@ def Home():
 scaler = MinMaxScaler()
 @app.route("/predict", methods=['POST'])
 def predict():
-    if request.method == 'POST':
+    if (request.method == 'POST'):
         feature_1 = float(request.form['MDVP:Fo(Hz)'])
         feature_2 = float(request.form['MDVP:Fhi(Hz)'])
         feature_3 = float(request.form['MDVP:Flo(Hz)'])
@@ -44,7 +44,7 @@ def predict():
 
         prediction = model.predict(values)
 
-        if prediction==1:
+        if (prediction==1):
             return render_template('index.html', prediction_text='positive report') 
 
         else:
