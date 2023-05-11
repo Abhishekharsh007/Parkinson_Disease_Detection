@@ -12,7 +12,7 @@ gunicorn==20.0.4
 itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.2
-numpy==1.2.16
+numpy==1.21.6
 pandas==2.0.1
 pipenv==2023.4.29
 pipreq==0.4
