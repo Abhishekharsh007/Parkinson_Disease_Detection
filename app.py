@@ -43,12 +43,10 @@ def predict_parkinson():
 
     result = model32.predict(values)
 
-    if result[0][0]:
-        result = 'Positive Report' 
+    if (result):
+        return render_template('index.html', result=result)
     else:
-        result = 'Negative Report'
-        
-    return render_template('index.html', result=result)
+        return render_template('index.html', result=result)
 
 if __name__=='__main__':
     app.run(debug=True)
