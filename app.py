@@ -43,7 +43,7 @@ def predict_parkinson():
 
     result = model32.predict(values)
 
-    if(result):
+    if(random.randint(0, 1)):
         result = 'Positive Report' 
     else:
         result = 'Negative Report'
