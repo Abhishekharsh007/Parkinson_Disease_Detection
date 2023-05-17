@@ -48,7 +48,7 @@ def predict_parkinson():
 #     final_features = scaler.fit_transform(final_features)    
     
     preresult = model32.predict(final_features)
-    result = round(preresult[0], 2)
+    result = round(preresult[0])
 
     if (result==0):
         return render_template('index.html', result='Negative')
