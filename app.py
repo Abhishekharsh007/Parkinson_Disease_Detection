@@ -4,7 +4,7 @@ import requests
 import sklearn
 import pickle
 import decimal
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 
 app = Flask(__name__)
 
@@ -44,8 +44,8 @@ def predict_parkinson():
 
     features = [float(x) for x in request.form.values()]
     final_features = [np.array(features)]
-    scaler = StandardScaler()
-    final_features = scaler.transform(final_features)    
+    scaler = MinMaxScaler()
+    final_features = scaler.fit_transform(final_features)    
     
     preresult = model32.predict(final_features)
     result = round(preresult[0], 2)
