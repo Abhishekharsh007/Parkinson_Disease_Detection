@@ -4,16 +4,15 @@ import requests
 import sklearn
 import pickle
 import decimal
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
 
 model32 = pickle.load(open('parkinson_model32.pkl','rb'))
 @app.route('/')
-def index():
+def home():
     return render_template('index.html')
 
-scaler = MinMaxScaler()
 @app.route('/predict', methods=['POST'])
 def predict_parkinson():
     feature1 = float(request.form.get('MDVP:Fo(Hz)'))
@@ -40,7 +39,8 @@ def predict_parkinson():
     feature22 = float(request.form.get('PPE'))
 
     values = np.array([feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, feature9, feature10, feature11, feature12, feature13, feature14, feature15, feature16, feature17, feature18, feature19, feature20, feature21, feature22]).reshape(1, -1)
-
+    values = scaler.transform(values)
+    
     preresult = model32.predict(values)
     result = round(preresult[0], 2)
 
