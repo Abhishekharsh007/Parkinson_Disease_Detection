@@ -39,7 +39,7 @@ def predict_parkinson():
     feature21 = float(request.form.get('D2'))
     feature22 = float(request.form.get('PPE'))
 
-    values = np.array([feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, feature9, feature10, feature11, feature12, feature13, feature14, feature15, feature16, feature17, feature18, feature19, feature20, feature21, feature22]).reshape(1, 22)
+    values = np.array([feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, feature9, feature10, feature11, feature12, feature13, feature14, feature15, feature16, feature17, feature18, feature19, feature20, feature21, feature22]).reshape(1, -1)
 
     result = model32.predict(values)
 
