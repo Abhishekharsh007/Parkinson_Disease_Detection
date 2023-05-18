@@ -48,12 +48,14 @@ def predict_parkinson():
 #     final_features = scaler.fit_transform(final_features)    
     
     preresult = model32.predict(final_features)
-    result = float(preresult[0])
+    result = str(preresult)
+    
+    return render_template('index.html', result=result)
 
-    if (result>0.5):
-        return render_template('index.html', result='Posi')
-    else:
-        return render_template('index.html', result='Negi')
+#     if (result>0.5):
+#         return render_template('index.html', result='Posi')
+#     else:
+#         return render_template('index.html', result='Negi')
 
 if __name__=='__main__':
     app.run(debug=True)
