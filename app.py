@@ -44,18 +44,18 @@ def predict_parkinson():
 
     features = [float(x) for x in request.form.values()]
     final_features = [np.array(features)]
+    
     scaler = MinMaxScaler()
     final_features = scaler.fit_transform(final_features)    
     
-    preresult = model32.predict(final_features)
-    result = str(preresult)
-    
-    return render_template('index.html', result=result)
+    result = model32.predict(final_features)
 
-#     if (result>0.5):
-#         return render_template('index.html', result='Posi')
+#     if (result[0]==1):
+#         return render_template('index.html', result='Positive Result')
 #     else:
-#         return render_template('index.html', result='Negi')
+#         return render_template('index.html', result='Negative Result')
+
+    return render_template('index.html', result=result)
 
 if __name__=='__main__':
     app.run(debug=True)
