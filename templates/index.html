@@ -91,6 +91,11 @@ div.column {
 
         <form action="/predict" method="post">
             <h2 style=" font-size: 300%;text-align: center; background-attachment: fixed;"> Parkinson Disease Detection </h2>
+            {% if result %}
+        <br>
+        <h1> {{result}} </h1>
+        <br>
+        {% endif %}
 
             <div class="row">
                 <div class="column">
