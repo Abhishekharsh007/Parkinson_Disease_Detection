@@ -45,8 +45,8 @@ def predict_parkinson():
     features = [float(x) for x in request.form.values()]
     final_features = [np.array(features)]
     
-#     scaler = MinMaxScaler()
-#     final_features = scaler.fit_transform(final_features)    
+    scaler = MinMaxScaler()
+    final_features = scaler.fit_transform(final_features)    
     
     result = model32.predict(final_features)
 
