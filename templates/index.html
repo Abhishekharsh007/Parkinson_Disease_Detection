@@ -1,108 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parkinson Disease Detection</title>
+    <link rel="stylesheet" href="styles1.css">
 </head>
 
-<body background="chipi.png" style="background-repeat: no-repeat; background-size: 100%100%;">
-    <div style="color: blue;">
-        <h1 style="background-color: black; font-size: 300%; display: contents;"> Parkinson Disease Detection </h1>
-        
-        {% if result %}
-            <br>
-            <h1> {{result}} </h1>
-            <br>
-        {% endif %}
-        
-        <form action="/predict" method="post">
-            <h3>MDVP:Fo(Hz)</h3>
-            <input id="first" name="MDVP:Fo(Hz)" required="required">
-
-            <h3>MDVP:Fhi(Hz)</h3>
-            <input id="second" name="MDVP:Fhi(Hz)" required="required">
-
-            <h3>MDVP:Flo(Hz)</h3>
-            <input id="third" name="MDVP:Flo(Hz)" required="required">
-
-            <h3>MDVP:Jitter(%)</h3>
-            <input id="fourth" name="MDVP:Jitter(%)" required="required">
-
-            <h3>MDVP:Jitter(Abs)</h3>
-            <input id="fifth" name="MDVP:Jitter(Abs)" required="required">
-
-            <h3>MDVP:RAP</h3>
-            <input id="sixth" name="MDVP:RAP" required="required">
-
-            <h3>MDVP:PPQ</h3>
-            <input id="seventh" name="MDVP:PPQ" required="required">
-
-            <h3>Jitter:DDP</h3>
-            <input id="eighth" name="Jitter:DDP" required="required">
-
-            <h3>MDVP:Shimmer</h3>
-            <input id="ninth" name="MDVP:Shimmer" required="required">
-
-            <h3>MDVP:Shimmer(dB)</h3>
-            <input id="tenth" name="MDVP:Shimmer(dB)" required="required">
-
-            <h3>Shimmer:APQ3</h3>
-            <input id="eleventh" name="Shimmer:APQ3" required="required">
-
-            <h3>Shimmer:APQ5</h3>
-            <input id="twelth" name="Shimmer:APQ5" required="required">
-
-            <h3>MDVP:APQ</h3>
-            <input id="thirteenth" name="MDVP:APQ" required="required">
-
-            <h3>Shimmer:DDA</h3>
-            <input id="forteenth" name="Shimmer:DDA" required="required">
-
-            <h3>NHR</h3>
-            <input id="fifteenth" name="NHR" required="required">
-
-            <h3>HNR</h3>
-            <input id="sixteenth" name="HNR" required="required">
-
-            <h3>RPDE</h3>
-            <input id="seventeenth" name="RPDE" required="required">
-
-            <h3>DFA</h3>
-            <input id="eighteenth" name="DFA" required="required">
-
-            <h3>spread1</h3>
-            <input id="ninteenth" name="spread1" required="required">
-
-            <h3>spread2</h3>
-            <input id="twentyth" name="spread2" required="required">
-
-            <h3>D2</h3>
-            <input id="twentyoneth" name="D2" required="required">
-
-            <h3>PPE</h3>
-            <input id="twentytwoth" name="PPE" required="required">
-            
-            <br><br><br>
-
-            <button id="sub" type="submit" value="Predict" style="background-color: yellow; border: 5px; font-size: 30px; border:20px; border-radius: 5px;">Predict</button>
-        </form>
-    </div>
-
-
+<body>
     <style>
-        body {
-            background-color:#FF6F61 ;
-            text-align: block;
-            padding: 0px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-/*         body{
+        *{
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+h3{
+    text-align: center;
+    margin-bottom: -20px;
+}
+
+body{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,235 +31,161 @@
     flex-direction: column;
     gap: 30px;
     background: #d5dde6;
-} */
+}
+.inputBox{
+    position: relative;
+    width: 250px;
+}
+.inputBox input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(177, 11, 11, 0.25);
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+}
+div.column {
+    float: left;
+    width: 25%;
+    padding :20px;
+    margin-right: 85px;
+
+  } 
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  } 
+
+
+.in
+{
+    border-radius: 14px;
+    height: 25px;
+    font-size: 20px;
+    text-align: center;
+}
+#sub {
+    width: 200px;
+    height: 60px; 
+    color: white;
+    background-color: rgb(10, 3, 3); 
+    border: 5px; 
+    font-size: 35px;
+    border-radius: 14px;
+    position: absolute;
+
+            left: 720px;
+            top: 770px;
+}
+ #sub:hover {
+    background-color: rgb(114, 164, 177);
+    color: rgb(2, 2, 2);
+} 
         
-        #research {
-            font-size: 18px;
-            width: 100px;
-            height: 23px;
-            top: 23px;
-        }
-        
-        #box {
-            border-radius: 60px;
-            border-color: 45px;
-            border-style: solid;
-            font-family: cursive;
-            text-align: center;
-            background-color: rgb(168, 131, 61);
-            font-size: medium;
-            position: absolute;
-            width: 700px;
-            bottom: 9%;
-            height: 850px;
-            right: 30%;
-            padding: 0px;
-            margin: 0px;
-            font-size: 14px;
-        }
-        
-        #fuel {
-            width: 83px;
-            height: 43px;
-            text-align: center;
-            border-radius: 14px;
-            font-size: 20px;
-        }
-        
-        #fuel:hover {
-            background-color: coral;
-        }
-        
-        #research {
-            width: 99px;
-            height: 43px;
-            text-align: center;
-            border-radius: 14px;
-            font-size: 18px;
-        }
-        
-        #research:hover {
-            background-color: coral;
-        }
-        
-        #resea {
-            width: 99px;
-            height: 43px;
-            text-align: center;
-            border-radius: 14px;
-            font-size: 18px;
-        }
-        
-        #resea:hover {
-            background-color: coral;
-        }
-        
-        #sub {
-            width: 120px;
-            height: 43px;
-            text-align: center;
-            border-radius: 14px;
-            font-size: 18px;
-        }
-        
-        #sub:hover {
-            background-color: darkcyan;
-        }
-        
-        #first {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-        
-        #second {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-        
-        #third {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-        
-        #fourth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #fifth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #sixth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #seventh {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #eighth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #ninth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #tenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #eleventh {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #twelth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #thirteenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #forteenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #fifteenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #sixteenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #seventeenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #eighteenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #ninteenth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #twentyth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #twentyoneth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        #twentytwoth {
-            border-radius: 14px;
-            height: 25px;
-            font-size: 20px;
-            text-align: center;
-        }
     </style>
 
+    <div>
+
+        <form action="/predict" method="post">
+            <h2 style=" font-size: 300%;text-align: center; background-attachment: fixed;"> Parkinson Disease Detection </h2>
+
+            <div class="row">
+                <div class="column">
+                    <h3 class="h3">MDVP: Fo(hz)</h3>
+                    <input class="in" id="one" name="MDVP:Fo(Hz)" required="required">
+
+                    <h3>MDVP: Fhi(hz)</h3>
+                    <input class="in"  id="two" name="MDVP:Fhi(Hz)" required="required">
+
+                    <h3>MDVP: Flo(hz)</h3>
+                    <input class="in" id="three"  name="MDVP:Flo(Hz)" required="required">
+
+                    <h3>MDVP: Jitter(%)</h3>
+                    <input class="in" id="four"  name="MDVP:Jitter(%)" required="required">
+
+                    <h3>MDVP: Jitter(abs)</h3>
+                    <input class="in" id="five" name="MDVP:Jitter(Abs)" required="required">
+
+                    <h3>MDVP: RAP</h3>
+                    <input class="in" id="six" name="MDVP:RAP" required="required">
+
+                    <h3>MDVP: PPQ</h3>
+                    <input class="in" id="seven"  name="MDVP:PPQ" required="required">
+
+
+                    <h3>DFA</h3>
+                    <input class="in" id="eight"  name="Jitter:DDP" required="required">
+                </div>
+                <div class="column">
+                    
+                    <h3>MDVP: DDP</h3>
+                    <input class="in"  id="nine" name="MDVP:Shimmer" required="required">
+
+                    <h3>MDVP: Shimmer</h3>
+                    <input class="in" id="ten" name="MDVP:Shimmer(dB)" required="required">
+
+                    <h3>MDVP: Shimmer(db)</h3>
+                    <input class="in" id="eleven" name="Shimmer:APQ3" required="required">
+
+                    <h3>Shimmer: APQ3</h3>
+                    <input class="in" id="twelve" name="Shimmer:APQ5" required="required">
+
+                    <h3>Shimmer: APQ5</h3>
+                    <input class="in" id="thirteen" name="MDVP:APQ" required="required">
+
+                    <h3>MDVP: APQ</h3>
+                    <input class="in" id="fourteen"  name="Shimmer:DDA" required="required">
+
+                    <h3>Shimmer: DDA</h3>
+                    <input class="in" id="fifteen"  name="NHR" required="required">
+
+                </div>
+                <div class="column">
+                   
+                    <h3>NHR</h3>
+                    <input class="in" id="sixteen"  name="HNR" required="required">
+
+                    <h3>HNR</h3>
+                    <input class="in" id="seventeen" name="RPDE" required="required">
+
+                    <h3>RPDE</h3>
+                    <input class="in" id="eighteen"  name="DFA" required="required">
+
+                    <h3>spread 1</h3>
+                    <input class="in"  id="nineteen" name="spread1" required="required">
+
+                    <h3>spread 2</h3>
+                    <input class="in"  id="twenty"   name="spread2" required="required">
+
+                    <h3>D 2</h3>
+                    <input class="in"  id="twentyone" name="D2" required="required">
+
+                    <h3>PPE</h3>
+                    <input class="in"  id="twentytwo"  name="PPE" required="required">
+
+                    <button  class="button" id="sub" type="submit">
+                        Predict
+                    </button>
+
+                </div>
+            </div>
+
+        </form>
+                    <br>
+                    <br>
+                    <br>
+        {% if result %}
+        <br>
+        <h1> {{result}} </h1>
+        <br>
+        {% endif %}
+    </div>
+
+
+
 </body>
+
 </html>
