@@ -46,14 +46,14 @@ def predict_parkinson():
     final_features = [np.array(features)]
     
     scaler = MinMaxScaler()
-    final_features = scaler.fit_transform(final_features)    
+#     final_features = scaler.fit_transform(final_features)    
     
     result = model32.predict(final_features)
 
     if (result[0]==1):
-        return render_template('index.html', result='Positive Result')
+        return render_template('index.html', result='Person may have Parkinson')
     else:
-        return render_template('index.html', result='Negative Result')
+        return render_template('index.html', result='Person may be Healthy')
 
 #     return render_template('index.html', result=result)
 
